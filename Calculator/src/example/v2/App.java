@@ -44,7 +44,7 @@ public class App {
                     return; // main 종료
                 } else if (str.equalsIgnoreCase("remove")) { // remove 입력 시 첫 번째 연산 결과 삭제
                     calc.removeFirstCalculation(); // calculator 클래스의 'removeFirstCalculation' 메서드 호출
-                    System.out.println("삭제 후 남은 연산 결과: " + calc.getResults()); // 삭제 후 남은 연살 결과 출력
+                    System.out.println("삭제 후 남은 연산 결과: " + calc.getResults()); // 삭제 후 남은 연산 결과 출력
                     break;
                 } else if (str.equalsIgnoreCase("yes")) {
                     System.out.println("계산 계속");
