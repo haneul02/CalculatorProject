@@ -7,14 +7,18 @@ import java.util.Scanner;
 public class App {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         // 입력을 받기 위한 Scanner 객체. System.in을 사용해서 키보드 입력을 받음
+        Scanner sc = new Scanner(System.in);
+        // 소수점 둘째 자릮지 표시 (DecimalFormat 객체 사용)
         DecimalFormat df = new DecimalFormat("0.00");
+        // 소수점 반올림 방식 내림( ex | 1.2555 -> 1.25로 표시)
         df.setRoundingMode(RoundingMode.DOWN);
 
         while(true){ // 계산기를 계속 실행하기 위해 무한 루프
             System.out.print("첫 번째 숫자를 입력하세요:");
-            double num1 = sc.nextDouble(); // Double
+            // nextDouble()처럼 숫자 입력 메서드는 숫자만 읽고 입력 후 남아 있는
+            // 개행 문자(\n)를 버퍼에 남겨둬서 nextLine()를 사용해서 버퍼를 비움
+            double num1 = sc.nextDouble();
             sc.nextLine();
 
             System.out.print("사칙연산의 기호를 입력하세요(+, -, *, /) : ");
@@ -26,7 +30,7 @@ public class App {
             sc.nextLine();
 
             double result = 0; // 계산 결과를 저장하는 변수
-            boolean validOperation = true; //
+            boolean validOperation = true; //연산이 유효한지 체크
 
             switch(operator){
                 case '+': // 더하기 연산
@@ -55,7 +59,7 @@ public class App {
                 continue;
             }
 
-            System.out.println("결과는 : " + df.format(result)); // 계산된 결과 출력
+            System.out.println("결과는 : " + df.format(result)); // 계산된 결과 출력(소수점 둘째 자리까지 표시)
             System.out.print("계산기 종료(exit 입력 시 종료, Yes 입력 시 계산 계속) : ");
             String str = sc.nextLine();
             if(str.equals("exit")){
@@ -65,7 +69,7 @@ public class App {
                 System.out.println("계산 계속"); // "exit"가 아니면 계산 계속 진행
             }
         }
-        sc.close();
+        sc.close(); // Scanner 객체 닫기
     }
 
 }
